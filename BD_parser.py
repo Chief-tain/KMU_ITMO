@@ -14,7 +14,7 @@ from Advanced_DB_RU import DbAdvanced
 
 class Parser:
 
-    def __init__(self, name='Semyon', api_id=15108736, api_hash='65fd102a9be7dab3632d17b2062188ae'):
+    def __init__(self, name='?????', api_id=??????, api_hash='?????????????????????'):
         self.name = name
         self.api_id = api_id
         self.api_hash = api_hash
