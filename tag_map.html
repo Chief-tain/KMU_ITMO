@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_94ed38837866aaa864994cb77515caca {
+                    position: relative;
+                    width: 1300.0px;
+                    height: 780.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_94ed38837866aaa864994cb77515caca" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_94ed38837866aaa864994cb77515caca = L.map(
+                "map_94ed38837866aaa864994cb77515caca",
+                {
+                    center: [65.0, 83.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ac7877aab9ec6e23888e11cfe8aba845 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 14, "maxZoom": 14, "minZoom": 1, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            L.Control.geocoder(
+                {"collapsed": false, "defaultMarkGeocode": true, "position": "topright"}
+            ).on('markgeocode', function(e) {
+                map_94ed38837866aaa864994cb77515caca.setView(e.geocode.center, 11);
+            }).addTo(map_94ed38837866aaa864994cb77515caca);
+
+        
+    
+            var mouse_position_3c10b2944ea62e98f2c8e200be62826a = new L.Control.MousePosition(
+                {"emptyString": "Unavailable", "lngFirst": false, "numDigits": 5, "position": "topright", "prefix": "Coordinates:", "separator": " | "}
+            );
+            mouse_position_3c10b2944ea62e98f2c8e200be62826a.options["latFormatter"] =
+                function(num) {return L.Util.formatNum(num, 3) + ' º ';};;
+            mouse_position_3c10b2944ea62e98f2c8e200be62826a.options["lngFormatter"] =
+                function(num) {return L.Util.formatNum(num, 3) + ' º ';};;
+            map_94ed38837866aaa864994cb77515caca.addControl(mouse_position_3c10b2944ea62e98f2c8e200be62826a);
+        
+    
+            var tile_layer_cddc8a055165f7a27477d3ccab2da0f7 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_fb13d287474aeaa275a17a07f62574ee = new L.Control.MiniMap(
+                tile_layer_cddc8a055165f7a27477d3ccab2da0f7,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "toggleDisplay": false, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_94ed38837866aaa864994cb77515caca.addControl(mini_map_fb13d287474aeaa275a17a07f62574ee);
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topleft", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var measure_control_46109fbd26f1657450ece68464370ee6 = new L.Control.Measure(
+                {"position": "topright", "primaryAreaUnit": "sqmeters", "primaryLengthUnit": "meters", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_94ed38837866aaa864994cb77515caca.addControl(measure_control_46109fbd26f1657450ece68464370ee6);
+
+        
+    
+            var tile_layer_2d37ab9086ae0860f38cffef487fa3b0 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var tile_layer_b613abc7e194872a7ff72af0b27d3474 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var tile_layer_b7b5c51ed28b239a4cb4935077bb1e8f = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var tile_layer_ac83e73b042c191387344bdada4bb387 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var tile_layer_8d1d33b4d9de0b61c950836d9b0806de = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var tile_layer_b3cb50d47d59ca9cde94bc3c5851ab35 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var tile_layer_c1d607297ec6c4910370be0b2fcdb74a = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {"attribution": "Esri", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var options = {
+              position: "topleft",
+              draw: {},
+              edit: {},
+            }
+            // FeatureGroup is to store editable layers.
+            var drawnItems = new L.featureGroup().addTo(
+                map_94ed38837866aaa864994cb77515caca
+            );
+            options.edit.featureGroup = drawnItems;
+            var draw_control_caeb675813f67ffd03eda65017b984aa = new L.Control.Draw(
+                options
+            ).addTo( map_94ed38837866aaa864994cb77515caca );
+            map_94ed38837866aaa864994cb77515caca.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on('click', function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems.addLayer(layer);
+             });
+            map_94ed38837866aaa864994cb77515caca.on('draw:created', function(e) {
+                drawnItems.addLayer(e.layer);
+            });
+            
+        
+    
+            var layer_control_dc19fa0c4e355c20e6665085ed38af72 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_ac83e73b042c191387344bdada4bb387,
+                    "stamentoner" : tile_layer_2d37ab9086ae0860f38cffef487fa3b0,
+                    "stamenterrain" : tile_layer_b613abc7e194872a7ff72af0b27d3474,
+                    "stamenwatercolor" : tile_layer_b7b5c51ed28b239a4cb4935077bb1e8f,
+                    "cartodbpositron" : tile_layer_8d1d33b4d9de0b61c950836d9b0806de,
+                    "cartodbdark_matter" : tile_layer_b3cb50d47d59ca9cde94bc3c5851ab35,
+                    "Esri Satellite" : tile_layer_c1d607297ec6c4910370be0b2fcdb74a,
+                },
+                overlays :  {
+                },
+            };
+            L.control.layers(
+                layer_control_dc19fa0c4e355c20e6665085ed38af72.base_layers,
+                layer_control_dc19fa0c4e355c20e6665085ed38af72.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+            tile_layer_2d37ab9086ae0860f38cffef487fa3b0.remove();
+            tile_layer_b613abc7e194872a7ff72af0b27d3474.remove();
+            tile_layer_b7b5c51ed28b239a4cb4935077bb1e8f.remove();
+            tile_layer_ac83e73b042c191387344bdada4bb387.remove();
+            tile_layer_8d1d33b4d9de0b61c950836d9b0806de.remove();
+            tile_layer_b3cb50d47d59ca9cde94bc3c5851ab35.remove();
+            tile_layer_c1d607297ec6c4910370be0b2fcdb74a.remove();
+        
+    
+            var marker_94a60a092e80240ae6a7d8752aaf8f02 = L.marker(
+                [55.83333, 32.93333],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_6412b2d640d53610e9482b9a22b7c133 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_94a60a092e80240ae6a7d8752aaf8f02.setIcon(icon_6412b2d640d53610e9482b9a22b7c133);
+        
+    
+        var popup_1b6a16751450cbb5c3ff06d011b0d12a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6e9126021dc5da3f7fdf3e4d87fcb447 = $(`<div id="html_6e9126021dc5da3f7fdf3e4d87fcb447" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/perecup_rf/83386>https://t.me/perecup_rf/83386</a>', '<a href=https://t.me/autotrade77/716137>https://t.me/autotrade77/716137</a>', '<a href=https://t.me/autotrade77/716953>https://t.me/autotrade77/716953</a>', '<a href=https://t.me/autotrade77/716559>https://t.me/autotrade77/716559</a>']</div>`)[0];
+            popup_1b6a16751450cbb5c3ff06d011b0d12a.setContent(html_6e9126021dc5da3f7fdf3e4d87fcb447);
+        
+
+        marker_94a60a092e80240ae6a7d8752aaf8f02.bindPopup(popup_1b6a16751450cbb5c3ff06d011b0d12a)
+        ;
+
+        
+    
+    
+            marker_94a60a092e80240ae6a7d8752aaf8f02.bindTooltip(
+                `<div>
+                     ['Белый', 4, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_a0976fa4cb421b6b93134003f75db718 = L.circle(
+                [55.83333, 32.93333],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6666.666666666667, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_bfd6258e17edcb7755793096a1ab5679 = L.marker(
+                [43.11667, 131.9],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_efd5476f70698be2a60bfc40aceec752 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_bfd6258e17edcb7755793096a1ab5679.setIcon(icon_efd5476f70698be2a60bfc40aceec752);
+        
+    
+        var popup_71a748531dfbda14b4029bf60648afe8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_11ce6158c13734bc2f3114c7ebef2239 = $(`<div id="html_11ce6158c13734bc2f3114c7ebef2239" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/autotrade77/716238>https://t.me/autotrade77/716238</a>', '<a href=https://t.me/autotrade77/714200>https://t.me/autotrade77/714200</a>']</div>`)[0];
+            popup_71a748531dfbda14b4029bf60648afe8.setContent(html_11ce6158c13734bc2f3114c7ebef2239);
+        
+
+        marker_bfd6258e17edcb7755793096a1ab5679.bindPopup(popup_71a748531dfbda14b4029bf60648afe8)
+        ;
+
+        
+    
+    
+            marker_bfd6258e17edcb7755793096a1ab5679.bindTooltip(
+                `<div>
+                     ['Владивосток', 2, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_a5f72f990f5680c46c5bec8e7f74b9c7 = L.circle(
+                [43.11667, 131.9],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3333.3333333333335, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_0cc9526e3823891a5b8a91581c6a11b0 = L.marker(
+                [59.21667, 39.9],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_ee0a55b5c611d9b0260fdae299bad88e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_0cc9526e3823891a5b8a91581c6a11b0.setIcon(icon_ee0a55b5c611d9b0260fdae299bad88e);
+        
+    
+        var popup_cfb814bb56a7e2aebd478969f2c9781d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_913c66be9b8f9ecefb612cd38bfda83f = $(`<div id="html_913c66be9b8f9ecefb612cd38bfda83f" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/perecup_rf/84029>https://t.me/perecup_rf/84029</a>', '<a href=https://t.me/autotrade77/715937>https://t.me/autotrade77/715937</a>']</div>`)[0];
+            popup_cfb814bb56a7e2aebd478969f2c9781d.setContent(html_913c66be9b8f9ecefb612cd38bfda83f);
+        
+
+        marker_0cc9526e3823891a5b8a91581c6a11b0.bindPopup(popup_cfb814bb56a7e2aebd478969f2c9781d)
+        ;
+
+        
+    
+    
+            marker_0cc9526e3823891a5b8a91581c6a11b0.bindTooltip(
+                `<div>
+                     ['Вологда', 2, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_af403087ff10b50cc0c9ad23ce672529 = L.circle(
+                [59.21667, 39.9],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3333.3333333333335, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_61770becdf3479d7550e645272ff2a82 = L.marker(
+                [55.38333, 39.03361],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_6f4ecdb7fae8b798a06bd4d9526e93cf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_61770becdf3479d7550e645272ff2a82.setIcon(icon_6f4ecdb7fae8b798a06bd4d9526e93cf);
+        
+    
+        var popup_50763cdd23b898fc93746bc5bfb81d3c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_dbaeab5f1d6740bf7076aa04c4246ec1 = $(`<div id="html_dbaeab5f1d6740bf7076aa04c4246ec1" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/perecup_rf/84314>https://t.me/perecup_rf/84314</a>']</div>`)[0];
+            popup_50763cdd23b898fc93746bc5bfb81d3c.setContent(html_dbaeab5f1d6740bf7076aa04c4246ec1);
+        
+
+        marker_61770becdf3479d7550e645272ff2a82.bindPopup(popup_50763cdd23b898fc93746bc5bfb81d3c)
+        ;
+
+        
+    
+    
+            marker_61770becdf3479d7550e645272ff2a82.bindTooltip(
+                `<div>
+                     ['Егорьевск', 1, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_d7d16a121056e7d8027bf32bf6654e0d = L.circle(
+                [55.38333, 39.03361],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1666.6666666666667, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_e0cd73291511630fe8a854bbb1d207a0 = L.marker(
+                [56.83333, 60.58333],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_743379fe109fda9c5c012aad8567bd09 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_e0cd73291511630fe8a854bbb1d207a0.setIcon(icon_743379fe109fda9c5c012aad8567bd09);
+        
+    
+        var popup_9d8bcb76cfbe2d949e6c4fe57ad6ceb2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_98b8cce96e0deea5071d446963ac75fb = $(`<div id="html_98b8cce96e0deea5071d446963ac75fb" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/autotrade77/716137>https://t.me/autotrade77/716137</a>']</div>`)[0];
+            popup_9d8bcb76cfbe2d949e6c4fe57ad6ceb2.setContent(html_98b8cce96e0deea5071d446963ac75fb);
+        
+
+        marker_e0cd73291511630fe8a854bbb1d207a0.bindPopup(popup_9d8bcb76cfbe2d949e6c4fe57ad6ceb2)
+        ;
+
+        
+    
+    
+            marker_e0cd73291511630fe8a854bbb1d207a0.bindTooltip(
+                `<div>
+                     ['Екатеринбург', 1, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_865e162f8567abcc43a7dd9be1f325a4 = L.circle(
+                [56.83333, 60.58333],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1666.6666666666667, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_897ca49dd303d56211d07e16886dfb0f = L.marker(
+                [53.91667, 102.05],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_45eb069f8d1c27334ca178e31c3cfd6a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_897ca49dd303d56211d07e16886dfb0f.setIcon(icon_45eb069f8d1c27334ca178e31c3cfd6a);
+        
+    
+        var popup_27e1cc0feeeca10d32d2707fc97c7c1a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_31b8ceb54fb1acdc22f958fa1bf783ac = $(`<div id="html_31b8ceb54fb1acdc22f958fa1bf783ac" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/avto999999555/534942>https://t.me/avto999999555/534942</a>', '<a href=https://t.me/avto999999555/534699>https://t.me/avto999999555/534699</a>', '<a href=https://t.me/avto999999555/534556>https://t.me/avto999999555/534556</a>']</div>`)[0];
+            popup_27e1cc0feeeca10d32d2707fc97c7c1a.setContent(html_31b8ceb54fb1acdc22f958fa1bf783ac);
+        
+
+        marker_897ca49dd303d56211d07e16886dfb0f.bindPopup(popup_27e1cc0feeeca10d32d2707fc97c7c1a)
+        ;
+
+        
+    
+    
+            marker_897ca49dd303d56211d07e16886dfb0f.bindTooltip(
+                `<div>
+                     ['Зима', 3, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_d83b3afafde72215418da70269b78e99 = L.circle(
+                [53.91667, 102.05],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000.0, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_e1bc913c2f283e6162976c498b5103cd = L.marker(
+                [52.28333, 104.3],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_0587207f8f946b0fb435e8791f653faf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_e1bc913c2f283e6162976c498b5103cd.setIcon(icon_0587207f8f946b0fb435e8791f653faf);
+        
+    
+        var popup_673e9e7f2de3a6efb35d30eebea1e55e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f113ffa5465f08d0d5ac6c2da6e7f25a = $(`<div id="html_f113ffa5465f08d0d5ac6c2da6e7f25a" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/autotrade77/715892>https://t.me/autotrade77/715892</a>', '<a href=https://t.me/auto_sale_rf/301007>https://t.me/auto_sale_rf/301007</a>', '<a href=https://t.me/avto999999555/536687>https://t.me/avto999999555/536687</a>']</div>`)[0];
+            popup_673e9e7f2de3a6efb35d30eebea1e55e.setContent(html_f113ffa5465f08d0d5ac6c2da6e7f25a);
+        
+
+        marker_e1bc913c2f283e6162976c498b5103cd.bindPopup(popup_673e9e7f2de3a6efb35d30eebea1e55e)
+        ;
+
+        
+    
+    
+            marker_e1bc913c2f283e6162976c498b5103cd.bindTooltip(
+                `<div>
+                     ['Иркутск', 3, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_7f4e767ebc0c966d20f3ea42d3215f47 = L.circle(
+                [52.28333, 104.3],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000.0, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_ddab39f1a20eb92f5922e63a4e822ee1 = L.marker(
+                [55.79083, 49.11444],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_c0945c4abe7c09bcc17a34443254da97 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ddab39f1a20eb92f5922e63a4e822ee1.setIcon(icon_c0945c4abe7c09bcc17a34443254da97);
+        
+    
+        var popup_8afae3500a48d7ed39789f31011e4041 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ecafc6641fa7c5ded6a8c807f43d61fe = $(`<div id="html_ecafc6641fa7c5ded6a8c807f43d61fe" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/avto999999555/534942>https://t.me/avto999999555/534942</a>', '<a href=https://t.me/avto999999555/534699>https://t.me/avto999999555/534699</a>', '<a href=https://t.me/avto999999555/534556>https://t.me/avto999999555/534556</a>']</div>`)[0];
+            popup_8afae3500a48d7ed39789f31011e4041.setContent(html_ecafc6641fa7c5ded6a8c807f43d61fe);
+        
+
+        marker_ddab39f1a20eb92f5922e63a4e822ee1.bindPopup(popup_8afae3500a48d7ed39789f31011e4041)
+        ;
+
+        
+    
+    
+            marker_ddab39f1a20eb92f5922e63a4e822ee1.bindTooltip(
+                `<div>
+                     ['Казань', 3, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_6f1bbf8864eff536fae6a45b910105e7 = L.circle(
+                [55.79083, 49.11444],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000.0, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_6f5e7afb1a92963e22b051b98742dd99 = L.marker(
+                [55.75583, 37.61778],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_dda7e8a24a4b01b10066266bc4191407 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_6f5e7afb1a92963e22b051b98742dd99.setIcon(icon_dda7e8a24a4b01b10066266bc4191407);
+        
+    
+        var popup_f90695c0d4a7acfd9abb4ea9b15555ca = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3fbe5b0bbfd378dde1dd933c9118fe58 = $(`<div id="html_3fbe5b0bbfd378dde1dd933c9118fe58" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/perecup_rf/84303>https://t.me/perecup_rf/84303</a>', '<a href=https://t.me/ildar_auto_podbor/26696>https://t.me/ildar_auto_podbor/26696</a>', '<a href=https://t.me/autotrade77/714872>https://t.me/autotrade77/714872</a>', '<a href=https://t.me/autotrade77/714210>https://t.me/autotrade77/714210</a>', '<a href=https://t.me/autotrade77/713430>https://t.me/autotrade77/713430</a>', '<a href=https://t.me/avto999999555/535524>https://t.me/avto999999555/535524</a>', '<a href=https://t.me/avto999999555/534491>https://t.me/avto999999555/534491</a>', '<a href=https://t.me/perekupavtoRF/803899>https://t.me/perekupavtoRF/803899</a>', '<a href=https://t.me/perekupavtoRF/803330>https://t.me/perekupavtoRF/803330</a>', '<a href=https://t.me/auto_sale_rf/301917>https://t.me/auto_sale_rf/301917</a>']</div>`)[0];
+            popup_f90695c0d4a7acfd9abb4ea9b15555ca.setContent(html_3fbe5b0bbfd378dde1dd933c9118fe58);
+        
+
+        marker_6f5e7afb1a92963e22b051b98742dd99.bindPopup(popup_f90695c0d4a7acfd9abb4ea9b15555ca)
+        ;
+
+        
+    
+    
+            marker_6f5e7afb1a92963e22b051b98742dd99.bindTooltip(
+                `<div>
+                     ['Москва', 10, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_bffd3f8d25e9d44412145b62f9cda17d = L.circle(
+                [55.75583, 37.61778],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16666.666666666664, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var marker_dc3a1a5001864a556ae7ceabf8e4e299 = L.marker(
+                [51.76667, 55.1],
+                {}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+    
+            var icon_854f442a48fcabf058035caefb0c6cc3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_dc3a1a5001864a556ae7ceabf8e4e299.setIcon(icon_854f442a48fcabf058035caefb0c6cc3);
+        
+    
+        var popup_cad73ba6a3e5a33aca5acb80b9e3dde8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_daa089ba684b0f94852cd3283dcc79c4 = $(`<div id="html_daa089ba684b0f94852cd3283dcc79c4" style="width: 100.0%; height: 100.0%;">['<a href=https://t.me/tachki_nizhe_rynka/13061>https://t.me/tachki_nizhe_rynka/13061</a>']</div>`)[0];
+            popup_cad73ba6a3e5a33aca5acb80b9e3dde8.setContent(html_daa089ba684b0f94852cd3283dcc79c4);
+        
+
+        marker_dc3a1a5001864a556ae7ceabf8e4e299.bindPopup(popup_cad73ba6a3e5a33aca5acb80b9e3dde8)
+        ;
+
+        
+    
+    
+            marker_dc3a1a5001864a556ae7ceabf8e4e299.bindTooltip(
+                `<div>
+                     ['Оренбург', 1, 'kia']
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_5b316d230d09e18c224d553f32738fdc = L.circle(
+                [51.76667, 55.1],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1666.6666666666667, "stroke": false, "weight": 3}
+            ).addTo(map_94ed38837866aaa864994cb77515caca);
+        
+</script>
+</html>
